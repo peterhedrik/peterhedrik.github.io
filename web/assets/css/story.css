@@ -178,6 +178,17 @@
   opacity: 0.85;
 }
 
+.card__note {
+  margin: 8px 0 0;
+  padding-top: 8px;
+  border-top: 1px solid var(--cyan-faint);
+  font-family: var(--font-mono);
+  font-size: clamp(11px, 0.95vw, 12.5px);
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  color: #e4fdff;
+}
+
 /* ---------- Písanie textu ---------- */
 
 /* zvyšok textu, ktorý sa ešte len napíše – drží miesto, ale nie je vidieť */
@@ -206,4 +217,5 @@
   .card__years { font-size: 21px; }
   .card__name { font-size: 14px; }
   .card__field { font-size: 10.5px; margin-top: 4px; }
+  .card__note { font-size: 10.5px; margin-top: 6px; padding-top: 6px; }
 }

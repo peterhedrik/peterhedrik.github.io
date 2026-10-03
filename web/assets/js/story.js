@@ -4,9 +4,9 @@
 (function () {
   'use strict';
 
-  var TYPE_SPEED = 24;      // ms na znak (rýchlejšie než intro – textu je viac)
-  var ENTER = 650;          // ako dlho sa karta objavuje, kým sa začne písať text
-  var HOLD = 2200;          // čas na prečítanie po dopísaní textu, kým sa objaví ďalšia karta
+  var TYPE_SPEED = 15;      // ms na znak (rýchlejšie než intro – textu je viac)
+  var ENTER = 400;          // ako dlho sa karta objavuje, kým sa začne písať text
+  var HOLD = 1300;          // čas na prečítanie po dopísaní textu, kým sa objaví ďalšia karta
 
   var root = document.getElementById('intro');
   var story = document.getElementById('story');
