@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Peter Hedrik – GIS Supervisor</title>
+  <meta name="description" content="Peter Hedrik – GIS Supervisor, 15 rokov skúseností v oblasti GIS.">
+  <meta name="theme-color" content="#050b12">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="preload" href="assets/media/portrait.webp" as="image" type="image/webp">
+  <link rel="stylesheet" href="assets/css/intro.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <main class="intro" id="intro">
+    <!-- Pozadie: video, pod ním posledná snímka ako poistka -->
+    <div class="stage" aria-hidden="true">
+      <img class="stage__still" src="assets/media/intro-end.jpg" alt="">
+      <video class="stage__video" id="introVideo" muted playsinline preload="auto"
+             poster="assets/media/intro-start.jpg">
+        <source src="assets/media/intro.mp4" type="video/mp4">
+      </video>
+      <div class="stage__shade"></div>
+      <div class="stage__scanlines"></div>
+      <div class="stage__flash" id="flash"></div>
+    </div>
+
+    <!-- HUD: fotka + údaje -->
+    <section class="hud" id="hud" aria-labelledby="hud-title">
+      <h1 class="visually-hidden" id="hud-title">Peter Hedrik – GIS Supervisor</h1>
+
+      <div class="photo">
+        <div class="photo__frame">
+          <div class="photo__inner">
+            <picture>
+              <source srcset="assets/media/portrait.webp" type="image/webp">
+              <img src="assets/media/portrait.jpg" width="720" height="720" alt="Portrét Petra Hedrika">
+            </picture>
+            <span class="photo__scan" aria-hidden="true"></span>
+          </div>
+        </div>
+        <span class="photo__corner photo__corner--tl" aria-hidden="true"></span>
+        <span class="photo__corner photo__corner--br" aria-hidden="true"></span>
+        <span class="photo__ticks" aria-hidden="true"></span>
+      </div>
+
+      <div class="data">
+        <dl class="rows">
+          <div class="row"><dt class="type" data-text="NAME:">NAME:</dt><dd class="type" data-text="PETER HEDRIK">PETER HEDRIK</dd></div>
+          <div class="row"><dt class="type" data-text="POSITION:">POSITION:</dt><dd class="type" data-text="GIS SUPERVISOR">GIS SUPERVISOR</dd></div>
+          <div class="row"><dt class="type" data-text="AGE:">AGE:</dt><dd class="type" data-text="45">45</dd></div>
+          <div class="row"><dt class="type" data-text="EXPERIENCE:">EXPERIENCE:</dt><dd class="type" data-text="15 YEARS IN GIS BUSINESS">15 YEARS IN GIS BUSINESS</dd></div>
+        </dl>
+        <div class="actions">
+          <button class="continue" id="continue" type="button">Continue <span aria-hidden="true">&#9656;</span></button>
+          <p class="status" id="status" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/intro.js"></script>
+</body>
+</html>

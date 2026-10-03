@@ -1,0 +1,13 @@
+# Originálne fotky, videá a dokumenty – nenahrávať do gitu (veľké súbory, osobné údaje)
+material/
+
+# Systémové súbory
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ZIP na nahratie webu na hosting
+web-upload.zip
+
+# Poznamky pre Clauda - len lokalne, nezverejnovat
+CLAUDE.local.md
