@@ -94,12 +94,18 @@
     })();
   }
 
-  // ----- Continue (ďalšia obrazovka príde neskôr) -----
+  // ----- Continue → HUD zmizne a začne príbeh (story.js) -----
 
   continueBtn.addEventListener('click', function () {
+    if (root.classList.contains('is-leaving')) return;
+    root.classList.add('is-leaving');
     status.textContent = '';
-    status.setAttribute('data-text', 'LOADING NEXT FILE… // IN PREPARATION');
+    status.setAttribute('data-text', 'OPENING FILE…');
     typeText(status, function () {});
+    setTimeout(function () {
+      root.classList.add('is-story');
+      document.dispatchEvent(new CustomEvent('story:start'));
+    }, reduceMotion ? 0 : 900);
   });
 
 

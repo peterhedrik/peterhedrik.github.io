@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/media/portrait.webp" as="image" type="image/webp">
   <link rel="stylesheet" href="assets/css/intro.css">
+  <link rel="stylesheet" href="assets/css/story.css">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -59,8 +60,54 @@
         </div>
       </div>
     </section>
+
+    <!-- Príbeh: kapitola 01 – vzdelanie (spustí sa po Continue) -->
+    <section class="story" id="story" aria-labelledby="edu-title" hidden>
+      <header class="chapter">
+        <p class="chapter__kicker type" data-text="CHAPTER 01 // SUBJECT HISTORY"></p>
+        <h2 class="chapter__title type" id="edu-title" data-text="EDUCATION">EDUCATION</h2>
+      </header>
+
+      <ol class="timeline" id="timeline">
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/edu-primary.webp" width="960" height="720" alt="Budova základnej školy">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <p class="card__years type" data-text="1987 – 1995">1987 – 1995</p>
+            <h3 class="card__name type" data-text="PRIMARY SCHOOL">PRIMARY SCHOOL</h3>
+          </div>
+        </div></li>
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/edu-secondary.webp" width="800" height="600" alt="Budova strednej technickej školy">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <p class="card__years type" data-text="1995 – 1999">1995 – 1999</p>
+            <h3 class="card__name type" data-text="SECONDARY TECHNICAL SCHOOL">SECONDARY TECHNICAL SCHOOL</h3>
+            <p class="card__field type" data-text="ROAD TRANSPORT OPERATIONS AND MAINTENANCE">ROAD TRANSPORT OPERATIONS AND MAINTENANCE</p>
+          </div>
+        </div></li>
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/edu-university.webp" width="896" height="672" alt="Areál Žilinskej univerzity z vtáčej perspektívy">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <p class="card__years type" data-text="1999 – 2006">1999 – 2006</p>
+            <h3 class="card__name type" data-text="UNIVERSITY OF ŽILINA">UNIVERSITY OF ŽILINA</h3>
+            <p class="card__field type" data-text="RAILWAY TRANSPORT OPERATIONS AND MAINTENANCE">RAILWAY TRANSPORT OPERATIONS AND MAINTENANCE</p>
+          </div>
+        </div></li>
+      </ol>
+
+      <p class="status story__status type" id="storyStatus" data-text="END OF CHAPTER 01 // NEXT: WORK EXPERIENCE – IN PREPARATION"></p>
+    </section>
   </main>
 
   <script src="assets/js/intro.js"></script>
+  <script src="assets/js/story.js"></script>
 </body>
 </html>
