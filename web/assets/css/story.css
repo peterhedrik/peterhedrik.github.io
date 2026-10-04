@@ -1,5 +1,5 @@
 /* ==========================================================
-   Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti, 03 GIS, 04 projekty, 05 Inovate…)
+   Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti, 03 GIS, 04 projekty ABB, 05 Inovate, 06 projekty GE…)
    ========================================================== */
 
 /* ---------- Prechod z intra ---------- */
@@ -146,6 +146,7 @@
   gap: clamp(12px, 1.6vw, 20px);
 }
 .timeline--projects .card__body { padding: 10px 12px 14px; }
+.timeline--three { grid-template-columns: repeat(3, minmax(0, 1fr)); width: min(1000px, 100%); margin: 0 auto; }
 .timeline--projects .card__name { font-size: clamp(14px, 1.25vw, 17px); }
 
 .timeline--videos {

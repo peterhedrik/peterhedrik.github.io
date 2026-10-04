@@ -1,4 +1,4 @@
-/* Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti, 03 GIS, 04 projekty, 05 Inovate…).
+/* Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti, 03 GIS, 04 projekty ABB, 05 Inovate, 06 projekty GE…).
    Každá kapitola je <section data-chapter>. Karty sa ukazujú samy jedna po druhej priamo
    na svojom mieste (zľava doprava) a ostávajú zobrazené. Po poslednej karte sa objaví
    Continue, ktoré kapitolu zavrie a otvorí ďalšiu – alebo, ak má kapitola data-auto-next,

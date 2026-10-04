@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/media/portrait.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="assets/css/intro.css?v=9">
-  <link rel="stylesheet" href="assets/css/story.css?v=9">
+  <link rel="stylesheet" href="assets/css/intro.css?v=10">
+  <link rel="stylesheet" href="assets/css/story.css?v=10">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -322,8 +322,8 @@
       </div>
     </section>
 
-    <!-- Príbeh: kapitola 05 – Inovate (od 2024), projekty GE Vernova GIS -->
-    <section class="story" id="inovate" data-chapter aria-labelledby="inovate-title" hidden>
+    <!-- Príbeh: kapitola 05 – Inovate (od 2024), projekty GE Vernova GIS; ďalšia kapitola sa otvorí sama -->
+    <section class="story" id="inovate" data-chapter data-auto-next="2000" aria-labelledby="inovate-title" hidden>
       <header class="chapter">
         <h2 class="chapter__title type" id="inovate-title" data-text="2024">2024</h2>
         <p class="chapter__lead type" data-text="A NEW CHAPTER AT INOVATE">A NEW CHAPTER AT INOVATE</p>
@@ -353,9 +353,79 @@
         </div></li>
       </ol>
     </section>
+    <!-- Príbeh: kapitola 06 – projekty z obdobia Inovate / GE Vernova -->
+    <section class="story story--projects" id="projects-ge" data-chapter data-hold="500" aria-labelledby="projects-ge-title" hidden>
+      <header class="chapter">
+        <h2 class="chapter__title type" id="projects-ge-title" data-text="PROJECTS">PROJECTS</h2>
+        <p class="chapter__sub type" data-text="INOVATE / GE VERNOVA · 2024 – TODAY">INOVATE / GE VERNOVA · 2024 – TODAY</p>
+      </header>
+
+      <ol class="timeline timeline--projects timeline--three">
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/ge-bollinger.webp" width="960" height="720" loading="lazy" alt="Zelené GIS polia v rozvodni – Böllinger Höfe, Heilbronn, Nemecko">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <h3 class="card__name type" data-text="BÖLLINGER HÖFE">BÖLLINGER HÖFE</h3>
+            <p class="card__field type" data-text="HEILBRONN, GERMANY · GIS INSTALLATION">HEILBRONN, GERMANY · GIS INSTALLATION</p>
+          </div>
+        </div></li>
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/ge-ceuta.webp" width="960" height="720" loading="lazy" alt="GIS rozvádzač v hale rozvodne – Ceuta, Španielsko">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <h3 class="card__name type" data-text="CEUTA">CEUTA</h3>
+            <p class="card__field type" data-text="SPAIN · GIS INSTALLATION">SPAIN · GIS INSTALLATION</p>
+          </div>
+        </div></li>
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/ge-halver.webp" width="960" height="720" loading="lazy" alt="Montáž GIS so zariadením na plnenie plynu – Halver, Nemecko">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <h3 class="card__name type" data-text="HALVER">HALVER</h3>
+            <p class="card__field type" data-text="GERMANY · GIS INSTALLATION">GERMANY · GIS INSTALLATION</p>
+          </div>
+        </div></li>
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/ge-rangersdorf.webp" width="960" height="720" loading="lazy" alt="GIS rozvádzač – Rangersdorf, Rakúsko">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <h3 class="card__name type" data-text="RANGERSDORF">RANGERSDORF</h3>
+            <p class="card__field type" data-text="AUSTRIA · GIS INSTALLATION">AUSTRIA · GIS INSTALLATION</p>
+          </div>
+        </div></li>
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/ge-stedin.webp" width="960" height="720" loading="lazy" alt="GIS rozvádzač – projekt Stedin SIF, Holandsko">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <h3 class="card__name type" data-text="STEDIN SIF">STEDIN SIF</h3>
+            <p class="card__field type" data-text="NETHERLANDS · GIS INSTALLATION">NETHERLANDS · GIS INSTALLATION</p>
+          </div>
+        </div></li>
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/ge-wanheim.webp" width="960" height="720" loading="lazy" alt="Rad GIS polí v rozvodni – Wanheim, Nemecko">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <h3 class="card__name type" data-text="WANHEIM">WANHEIM</h3>
+            <p class="card__field type" data-text="GERMANY · GIS INSTALLATION">GERMANY · GIS INSTALLATION</p>
+          </div>
+        </div></li>
+      </ol>
+    </section>
   </main>
 
-  <script src="assets/js/intro.js?v=9"></script>
-  <script src="assets/js/story.js?v=9"></script>
+  <script src="assets/js/intro.js?v=10"></script>
+  <script src="assets/js/story.js?v=10"></script>
 </body>
 </html>
