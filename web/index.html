@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/media/portrait.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="assets/css/intro.css?v=10">
-  <link rel="stylesheet" href="assets/css/story.css?v=10">
+  <link rel="stylesheet" href="assets/css/intro.css?v=11">
+  <link rel="stylesheet" href="assets/css/story.css?v=11">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -422,10 +422,66 @@
           </div>
         </div></li>
       </ol>
+
+      <div class="story__next">
+        <button class="continue" type="button">Continue <span aria-hidden="true">&#9656;</span></button>
+      </div>
+    </section>
+    <!-- Príbeh: kapitola 07 – aktuálny projekt (TenneT IJmuiden Beta, Singapur 2026) -->
+    <section class="story story--now" id="now" data-chapter data-hold="500" aria-labelledby="now-title" hidden>
+      <header class="chapter">
+        <h2 class="chapter__title type" id="now-title" data-text="CURRENT PROJECT">CURRENT PROJECT</h2>
+        <p class="chapter__lead type" data-text="TENNET PROJECT 1 IJMUIDEN BETA">TENNET PROJECT 1 IJMUIDEN BETA</p>
+        <p class="chapter__sub chapter__sub--live"><span class="live" aria-hidden="true"></span><span class="type" data-text="SINGAPORE · 2026">SINGAPORE · 2026</span></p>
+      </header>
+
+      <ul class="partners">
+        <li class="partners__logo"><img src="assets/media/logo-tennet.webp" width="590" height="160" alt="Logo TenneT"></li>
+        <li class="partners__logo"><img src="assets/media/logo-ge.webp" width="432" height="136" alt="Logo GE Vernova"></li>
+      </ul>
+
+      <ol class="timeline timeline--projects">
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/actual-1.webp" width="960" height="720" loading="lazy" alt="Rozostavaná konvertorová platforma v lešení – Singapur">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <h3 class="card__name type" data-text="PLATFORM CONSTRUCTION">PLATFORM CONSTRUCTION</h3>
+          </div>
+        </div></li>
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/actual-2.webp" width="960" height="720" loading="lazy" alt="Zelené GIS polia v hale platformy">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <h3 class="card__name type" data-text="GIS HALL">GIS HALL</h3>
+          </div>
+        </div></li>
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/actual-3.webp" width="960" height="720" loading="lazy" alt="Žeriav dvíha GIS modul na platformu">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <h3 class="card__name type" data-text="GIS MODULE LIFTING">GIS MODULE LIFTING</h3>
+          </div>
+        </div></li>
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/actual-4.webp" width="960" height="720" loading="lazy" alt="Montáž GIS polí na platforme">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <h3 class="card__name type" data-text="GIS INSTALLATION">GIS INSTALLATION</h3>
+          </div>
+        </div></li>
+      </ol>
     </section>
   </main>
 
-  <script src="assets/js/intro.js?v=10"></script>
-  <script src="assets/js/story.js?v=10"></script>
+  <script src="assets/js/intro.js?v=11"></script>
+  <script src="assets/js/story.js?v=11"></script>
 </body>
 </html>
