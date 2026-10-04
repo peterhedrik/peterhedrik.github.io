@@ -140,9 +140,9 @@
 
 .timeline--pair .card { align-self: stretch; }
 
-/* projekty: 5 fotiek v rade, pod nimi 3 videá */
+/* projekty: 8 fotiek v dvoch radoch po 4, pod nimi 3 videá */
 .timeline--projects {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: clamp(12px, 1.6vw, 20px);
 }
 .timeline--projects .card__body { padding: 10px 12px 14px; }
