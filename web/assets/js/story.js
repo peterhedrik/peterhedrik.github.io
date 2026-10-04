@@ -1,4 +1,4 @@
-/* Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti, 03 GIS, 04 projekty ABB, 05 Inovate, 06 projekty GE, 07 aktuálny projekt…).
+/* Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti, 03 GIS, 04 projekty ABB, 05 Inovate, 06 projekty GE, 07 aktuálny projekt, 08 zručnosti, 09 jazyky, 10 záverečná otázka).
    Každá kapitola je <section data-chapter>. Karty sa ukazujú samy jedna po druhej priamo
    na svojom mieste (zľava doprava) a ostávajú zobrazené. Po poslednej karte sa objaví
    Continue, ktoré kapitolu zavrie a otvorí ďalšiu – alebo, ak má kapitola data-auto-next,
@@ -10,6 +10,9 @@
   var ENTER = 400;          // ako dlho sa karta objavuje, kým sa začne písať text
   var HOLD = 1300;          // čas na prečítanie po dopísaní textu, kým sa objaví ďalšia karta
   var LEAVE = 850;          // ako dlho trvá odchod kapitoly (po Continue alebo data-auto-next)
+  var SLIDE_FIRST = 2800;   // zručnosti: ako dlho svieti prvý obrázok…
+  var SLIDE_LAST = 420;     // …a ako dlho posledný – medzi tým sa to plynulo zrýchľuje
+  var SLIDE_TYPE = 1400;    // obrázky kratšie než toto už popis nepíšu, ukážu ho naraz
 
   var root = document.getElementById('intro');
   var chapters = Array.prototype.slice.call(document.querySelectorAll('[data-chapter]'));
@@ -82,9 +85,51 @@
       .then(function () { return wait(hold); });
   }
 
+  // obrázky s data-src sa začnú sťahovať až keď treba (o kapitolu skôr, aby boli pripravené)
+  function preload(ch) {
+    if (!ch) return;
+    all(ch, 'img[data-src]').forEach(function (img) {
+      img.src = img.getAttribute('data-src');
+      img.removeAttribute('data-src');
+    });
+  }
+
+  // Zručnosti: obrázky sa striedajú na jednom mieste a každý svieti o niečo kratšie než
+  // predchádzajúci (geometricky od SLIDE_FIRST po SLIDE_LAST).
+  function slideshow(ch) {
+    var box = ch.querySelector('.slides');
+    var imgs = all(ch, '.slides__img');
+    var text = ch.querySelector('.slides__text');
+    var n = imgs.length;
+    var ratio = Math.pow(SLIDE_LAST / SLIDE_FIRST, 1 / Math.max(n - 1, 1));
+
+    box.classList.add('is-on');
+    var chain = wait(600);
+    imgs.forEach(function (img, i) {
+      var ms = Math.round(SLIDE_FIRST * Math.pow(ratio, i));
+      chain = chain.then(function () {
+        if (imgs[i - 1]) imgs[i - 1].classList.remove('is-on');
+        img.classList.add('is-on');
+        text.setAttribute('data-text', img.getAttribute('data-caption'));
+        if (ms >= SLIDE_TYPE) return Promise.all([type(text), wait(ms)]);
+        text.textContent = img.getAttribute('data-caption');
+        return wait(ms);
+      });
+    });
+    // na záver obrázok zmizne a v prázdnom rámiku sa napíše „…AND MUCH MORE“
+    var end = ch.querySelector('.slides__end');
+    if (!end) return chain;
+    return chain.then(function () {
+      box.classList.add('is-end');
+      return wait(500);
+    }).then(function () { return type(end); });
+  }
+
   function open(index) {
     var ch = chapters[index];
     ch.hidden = false;
+    preload(ch);
+    preload(chapters[index + 1]);
     root.scrollTop = 0;
     window.scrollTo(0, 0);
 
@@ -97,6 +142,7 @@
     cards.forEach(function (card, i) {
       chain = chain.then(function () { return show(card, i === cards.length - 1 ? 0 : hold); });
     });
+    if (ch.querySelector('.slides')) chain = chain.then(function () { return slideshow(ch); });
 
     if (!chapters[index + 1]) return;
 
