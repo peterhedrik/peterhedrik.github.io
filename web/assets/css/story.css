@@ -1,5 +1,5 @@
 /* ==========================================================
-   Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti, 03 GIS…)
+   Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti, 03 GIS, 04 projekty, 05 Inovate…)
    ========================================================== */
 
 /* ---------- Prechod z intra ---------- */
@@ -139,6 +139,67 @@
 .timeline__arrow:has(+ .card.is-on) { opacity: 1; transform: none; }
 
 .timeline--pair .card { align-self: stretch; }
+
+/* projekty: 5 fotiek v rade, pod nimi 3 videá */
+.timeline--projects {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(12px, 1.6vw, 20px);
+}
+.timeline--projects .card__body { padding: 10px 12px 14px; }
+.timeline--projects .card__name { font-size: clamp(14px, 1.25vw, 17px); }
+
+.timeline--videos {
+  width: min(1000px, 100%);
+  margin: 0 auto;
+  gap: clamp(12px, 1.6vw, 20px);
+}
+.story--projects { gap: clamp(18px, 2.6vh, 30px); }
+
+/* video: náhľad s tlačidlom Play, po kliknutí prehrávač YouTube */
+.video {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: #000;
+  cursor: pointer;
+}
+.card--video .card__photo img,
+.video__frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.video__frame { height: auto; border: 0; outline: 1px solid rgba(127, 243, 255, 0.35); outline-offset: -1px; }
+
+.video__play {
+  --c: 10px;
+  position: absolute;
+  left: 50%; top: 50%;
+  width: 64px; height: 44px;
+  transform: translate(-50%, -50%);
+  background: rgba(4, 14, 22, 0.75);
+  box-shadow: inset 0 0 0 1px var(--cyan), 0 0 18px rgba(63, 230, 245, 0.45);
+  clip-path: polygon(var(--c) 0, 100% 0, 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, 0 100%, 0 var(--c));
+  transition: background 0.2s;
+}
+.video__play::after {
+  content: "";
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-35%, -50%);
+  border-style: solid;
+  border-width: 9px 0 9px 15px;
+  border-color: transparent transparent transparent var(--cyan);
+  filter: drop-shadow(0 0 6px var(--cyan-strong));
+}
+.video:hover .video__play,
+.video:focus-visible .video__play { background: var(--cyan); }
+.video:hover .video__play::after,
+.video:focus-visible .video__play::after { border-left-color: #03141c; }
+.video:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
 
 .card {
   position: relative;
@@ -298,4 +359,9 @@
   .timeline__arrow { width: 2px; height: 28px; background: linear-gradient(180deg, transparent, var(--cyan)); transform: scaleY(0); transform-origin: top; }
   .timeline__arrow::after { right: auto; top: auto; left: 50%; bottom: -2px; transform: translateX(-50%) rotate(135deg); }
   .card__photo--logo img { aspect-ratio: auto; padding: 14% 10%; }
+  .timeline--projects { grid-template-columns: 1fr; gap: 14px; }
+  .timeline--videos { gap: 14px; }
+  .card--video .card__frame { flex-direction: column; }
+  .card--video .card__photo { flex: none; padding: 6px 6px 0; }
+  .card--video .card__photo img { height: auto; aspect-ratio: 16 / 9; min-height: 0; }
 }

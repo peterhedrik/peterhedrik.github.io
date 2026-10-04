@@ -1,4 +1,4 @@
-/* Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti, 03 GIS…).
+/* Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti, 03 GIS, 04 projekty, 05 Inovate…).
    Každá kapitola je <section data-chapter>. Karty sa ukazujú samy jedna po druhej priamo
    na svojom mieste (zľava doprava) a ostávajú zobrazené. Po poslednej karte sa objaví
    Continue, ktoré kapitolu zavrie a otvorí ďalšiu – alebo, ak má kapitola data-auto-next,
@@ -66,13 +66,20 @@
     return els.reduce(function (p, el) { return p.then(function () { return type(el); }); }, Promise.resolve());
   }
 
-  function show(card, last) {
+  // posunie stránku k prvku, ak nie je celý na obrazovke (mobil, dlhšie kapitoly)
+  function reveal(el) {
+    var r = el.getBoundingClientRect();
+    if (r.top >= 0 && r.bottom <= window.innerHeight) return;
+    el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: narrow.matches ? 'center' : 'nearest' });
+  }
+
+  function show(card, hold) {
     card.classList.add('is-on');
-    if (narrow.matches) card.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+    reveal(card);
 
     return wait(ENTER)
       .then(function () { return typeAll(all(card, '.type')); })
-      .then(function () { return wait(last ? 0 : HOLD); });
+      .then(function () { return wait(hold); });
   }
 
   function open(index) {
@@ -82,11 +89,13 @@
     window.scrollTo(0, 0);
 
     var cards = all(ch, '.card');
+    var hold = parseInt(ch.getAttribute('data-hold'), 10);   // data-hold – kratšia pauza pri veľa kartách
+    if (isNaN(hold)) hold = HOLD;
     var chain = wait(50)
       .then(function () { return typeAll(all(ch, '.chapter .type')); })
       .then(function () { return wait(700); });
     cards.forEach(function (card, i) {
-      chain = chain.then(function () { return show(card, i === cards.length - 1); });
+      chain = chain.then(function () { return show(card, i === cards.length - 1 ? 0 : hold); });
     });
 
     if (!chapters[index + 1]) return;
@@ -95,6 +104,7 @@
       if (ch.classList.contains('is-leaving')) return;
       ch.classList.add('is-leaving');
       wait(LEAVE).then(function () {
+        all(ch, '.video__frame').forEach(function (f) { f.remove(); });   // zastaví prehrávané video
         ch.hidden = true;
         open(index + 1);
       });
@@ -112,10 +122,26 @@
 
     chain.then(function () { return wait(500); }).then(function () {
       btn.classList.add('is-on');
-      if (narrow.matches) btn.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+      reveal(btn);
     });
     btn.addEventListener('click', leave);
   }
+
+  // Videá z YouTube: kým sa neklikne, je tam len náhľad (žiadne cookies ani prehrávač).
+  // Po kliknutí sa náhľad nahradí prehrávačom youtube-nocookie.com.
+  all(document, '.video[data-youtube]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var src = 'https://www.youtube-nocookie.com/embed/' + btn.getAttribute('data-youtube') +
+        '?autoplay=1&rel=0&playsinline=1' + (btn.getAttribute('data-start') ? '&start=' + btn.getAttribute('data-start') : '');
+      var frame = document.createElement('iframe');
+      frame.className = 'video__frame';
+      frame.src = src;
+      frame.title = btn.getAttribute('aria-label');
+      frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      frame.allowFullscreen = true;
+      btn.replaceWith(frame);
+    });
+  });
 
   document.addEventListener('story:start', function () {
     if (started || !chapters.length) return;
