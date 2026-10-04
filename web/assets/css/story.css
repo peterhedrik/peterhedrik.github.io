@@ -310,6 +310,12 @@
   100% { top: calc(100% - 2px); opacity: 0; }
 }
 
+/* karta len s fotkou, bez textu (aktuálny projekt) */
+.card--bare .card__photo {
+  padding-bottom: 8px;
+  clip-path: polygon(var(--c) 0, 100% 0, 100% calc(100% - var(--c)), calc(100% - var(--c)) 100%, 0 100%, 0 var(--c));
+}
+
 .card__body {
   --c: 17px;
   position: relative;
@@ -398,6 +404,8 @@
   .timeline--projects { grid-template-columns: 1fr; gap: 14px; }
   .timeline--videos { gap: 14px; }
   .card--video .card__frame { flex-direction: column; }
+  .card--bare .card__photo { flex: 1; padding: 6px; }
+  .card--bare .card__photo img { aspect-ratio: 4 / 3; height: auto; }
   .card--video .card__photo { flex: none; padding: 6px 6px 0; }
   .card--video .card__photo img { height: auto; aspect-ratio: 16 / 9; min-height: 0; }
 }
