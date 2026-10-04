@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/media/portrait.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="assets/css/intro.css?v=14">
-  <link rel="stylesheet" href="assets/css/story.css?v=14">
+  <link rel="stylesheet" href="assets/css/intro.css?v=15">
+  <link rel="stylesheet" href="assets/css/story.css?v=15">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -472,7 +472,7 @@
       </div>
     </section>
     <!-- Príbeh: kapitola 08 – zručnosti (obrázky sa striedajú a postupne zrýchľujú) -->
-    <section class="story story--skills" id="skills" data-chapter aria-labelledby="skills-title" hidden>
+    <section class="story story--skills" id="skills" data-chapter data-auto-next="4500" aria-labelledby="skills-title" hidden>
       <header class="chapter">
         <h2 class="chapter__title type" id="skills-title" data-text="SKILLS">SKILLS</h2>
         <p class="chapter__sub type" data-text="ON SITE">ON SITE</p>
@@ -491,24 +491,24 @@
           <img class="slides__img" data-src="assets/media/skill-gas.webp" width="1200" height="800" data-caption="WORK WITH SF6 AND G3 GAS" alt="Plniace zariadenia na plyn SF6 a g3">
           <img class="slides__img" data-src="assets/media/skill-crane.webp" width="1200" height="800" data-caption="WORK WITH A CRANE" alt="Práca so žeriavom">
           <img class="slides__img" data-src="assets/media/skill-no-crane.webp" width="1200" height="800" data-caption="WORK WITHOUT A CRANE" alt="Práca bez žeriavu">
-          <img class="slides__img" data-src="assets/media/skill-screwdriver.webp" width="1200" height="800" data-caption="WORK WITH A SCREWDRIVER" alt="Skrutkovač">
-          <img class="slides__img" data-src="assets/media/skill-hammer.webp" width="1200" height="800" data-caption="WORK WITH A HAMMER" alt="Kladivo">
-          <img class="slides__img" data-src="assets/media/skill-pliers.webp" width="1200" height="800" data-caption="WORK WITH PLIERS" alt="Kombinačky">
-          <img class="slides__img" data-src="assets/media/skill-spanner.webp" width="1200" height="800" data-caption="WORK WITH A SPANNER" alt="Vidlicový kľúč">
-          <img class="slides__img" data-src="assets/media/skill-ratchet.webp" width="1200" height="800" data-caption="WORK WITH A RATCHET" alt="Račňa">
-          <img class="slides__img" data-src="assets/media/skill-torque-wrench.webp" width="1200" height="800" data-caption="WORK WITH A TORQUE WRENCH" alt="Momentový kľúč">
-          <img class="slides__img" data-src="assets/media/skill-hex-keys.webp" width="1200" height="800" data-caption="WORK WITH HEX KEYS" alt="Imbusové kľúče">
-          <img class="slides__img" data-src="assets/media/skill-side-cutters.webp" width="1200" height="800" data-caption="WORK WITH SIDE CUTTERS" alt="Štipacie kliešte">
-          <img class="slides__img" data-src="assets/media/skill-caliper.webp" width="1200" height="800" data-caption="WORK WITH A CALIPER" alt="Posuvné meradlo">
-          <img class="slides__img" data-src="assets/media/skill-folding-rule.webp" width="1200" height="800" data-caption="WORK WITH A FOLDING RULE" alt="Skladací meter">
-          <img class="slides__img" data-src="assets/media/skill-level.webp" width="1200" height="800" data-caption="WORK WITH A SPIRIT LEVEL" alt="Vodováha">
-          <img class="slides__img" data-src="assets/media/skill-file.webp" width="1200" height="800" data-caption="WORK WITH A FILE" alt="Pilník">
-          <img class="slides__img" data-src="assets/media/skill-hacksaw.webp" width="1200" height="800" data-caption="WORK WITH A HACKSAW" alt="Pílka na kov">
-          <img class="slides__img" data-src="assets/media/skill-crowbar.webp" width="1200" height="800" data-caption="WORK WITH A CROWBAR" alt="Páčidlo">
-          <img class="slides__img" data-src="assets/media/skill-drill.webp" width="1200" height="800" data-caption="WORK WITH A DRILL" alt="Vŕtačka">
-          <img class="slides__img" data-src="assets/media/skill-grinder.webp" width="1200" height="800" data-caption="WORK WITH AN ANGLE GRINDER" alt="Uhlová brúska">
-          <img class="slides__img" data-src="assets/media/skill-band-saw.webp" width="1200" height="800" data-caption="WORK WITH A BAND SAW" alt="Pásová píla">
-          <img class="slides__img" data-src="assets/media/skill-chainsaw.webp" width="1200" height="800" data-caption="WORK WITH A CHAINSAW" alt="Motorová píla">
+          <img class="slides__img" data-tool data-src="assets/media/skill-screwdriver.webp" width="1200" height="800" data-caption="WORK WITH A SCREWDRIVER" alt="Skrutkovač">
+          <img class="slides__img" data-tool data-src="assets/media/skill-hammer.webp" width="1200" height="800" data-caption="WORK WITH A HAMMER" alt="Kladivo">
+          <img class="slides__img" data-tool data-src="assets/media/skill-pliers.webp" width="1200" height="800" data-caption="WORK WITH PLIERS" alt="Kombinačky">
+          <img class="slides__img" data-tool data-src="assets/media/skill-spanner.webp" width="1200" height="800" data-caption="WORK WITH A SPANNER" alt="Vidlicový kľúč">
+          <img class="slides__img" data-tool data-src="assets/media/skill-ratchet.webp" width="1200" height="800" data-caption="WORK WITH A RATCHET" alt="Račňa">
+          <img class="slides__img" data-tool data-src="assets/media/skill-torque-wrench.webp" width="1200" height="800" data-caption="WORK WITH A TORQUE WRENCH" alt="Momentový kľúč">
+          <img class="slides__img" data-tool data-src="assets/media/skill-hex-keys.webp" width="1200" height="800" data-caption="WORK WITH HEX KEYS" alt="Imbusové kľúče">
+          <img class="slides__img" data-tool data-src="assets/media/skill-side-cutters.webp" width="1200" height="800" data-caption="WORK WITH SIDE CUTTERS" alt="Štipacie kliešte">
+          <img class="slides__img" data-tool data-src="assets/media/skill-caliper.webp" width="1200" height="800" data-caption="WORK WITH A CALIPER" alt="Posuvné meradlo">
+          <img class="slides__img" data-tool data-src="assets/media/skill-folding-rule.webp" width="1200" height="800" data-caption="WORK WITH A FOLDING RULE" alt="Skladací meter">
+          <img class="slides__img" data-tool data-src="assets/media/skill-level.webp" width="1200" height="800" data-caption="WORK WITH A SPIRIT LEVEL" alt="Vodováha">
+          <img class="slides__img" data-tool data-src="assets/media/skill-file.webp" width="1200" height="800" data-caption="WORK WITH A FILE" alt="Pilník">
+          <img class="slides__img" data-tool data-src="assets/media/skill-hacksaw.webp" width="1200" height="800" data-caption="WORK WITH A HACKSAW" alt="Pílka na kov">
+          <img class="slides__img" data-tool data-src="assets/media/skill-crowbar.webp" width="1200" height="800" data-caption="WORK WITH A CROWBAR" alt="Páčidlo">
+          <img class="slides__img" data-tool data-src="assets/media/skill-drill.webp" width="1200" height="800" data-caption="WORK WITH A DRILL" alt="Vŕtačka">
+          <img class="slides__img" data-tool data-src="assets/media/skill-grinder.webp" width="1200" height="800" data-caption="WORK WITH AN ANGLE GRINDER" alt="Uhlová brúska">
+          <img class="slides__img" data-tool data-src="assets/media/skill-band-saw.webp" width="1200" height="800" data-caption="WORK WITH A BAND SAW" alt="Pásová píla">
+          <img class="slides__img" data-tool data-src="assets/media/skill-chainsaw.webp" width="1200" height="800" data-caption="WORK WITH A CHAINSAW" alt="Motorová píla">
             <p class="slides__end type" data-text="…AND MUCH MORE">…AND MUCH MORE</p>
           </div>
           <span class="card__scan" aria-hidden="true"></span>
@@ -516,12 +516,9 @@
         <figcaption class="slides__caption" aria-live="polite"><span class="slides__can">CAN</span> <span class="slides__text type" data-text=""></span></figcaption>
       </figure>
 
-      <div class="story__next">
-        <button class="continue" type="button">Continue <span aria-hidden="true">&#9656;</span></button>
-      </div>
     </section>
     <!-- Príbeh: kapitola 09 – jazyky (vlajky namiesto fotiek) -->
-    <section class="story story--languages" id="languages" data-chapter aria-labelledby="languages-title" hidden>
+    <section class="story story--languages" id="languages" data-chapter data-auto-next="4000" aria-labelledby="languages-title" hidden>
       <header class="chapter">
         <h2 class="chapter__title type" id="languages-title" data-text="LANGUAGES">LANGUAGES</h2>
         <p class="chapter__lead type" data-text="I CAN SPEAK FLUENTLY">I CAN SPEAK FLUENTLY</p>
@@ -613,19 +610,17 @@
         </div></li>
       </ol>
 
-      <div class="story__next">
-        <button class="continue" type="button">Continue <span aria-hidden="true">&#9656;</span></button>
-      </div>
     </section>
     <!-- Príbeh: kapitola 10 – záverečná otázka -->
     <section class="story story--mission" id="mission" data-chapter aria-labelledby="mission-title" hidden>
       <header class="chapter">
         <h2 class="mission type" id="mission-title" data-text="WHAT SHOULD BE MY NEXT MISSION?">WHAT SHOULD BE MY NEXT MISSION?</h2>
       </header>
+      <p class="to-be-continued type" data-delay="3000" data-text="TO BE CONTINUED…">TO BE CONTINUED…</p>
     </section>
   </main>
 
-  <script src="assets/js/intro.js?v=14"></script>
-  <script src="assets/js/story.js?v=14"></script>
+  <script src="assets/js/intro.js?v=15"></script>
+  <script src="assets/js/story.js?v=15"></script>
 </body>
 </html>

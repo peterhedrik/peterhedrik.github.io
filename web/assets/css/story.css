@@ -418,6 +418,7 @@
 }
 .slides__img.is-on { opacity: 1; animation: slide-cut 0.22s ease-out; }
 .slides__img:first-child.is-on { animation: card-glitch 0.8s ease-out; }
+.slides.is-fast .slides__img.is-on { animation: none; }
 
 /* krátky záblesk pri výmene obrázka */
 @keyframes slide-cut {
@@ -483,6 +484,23 @@
 .card--wide .card__body { display: flex; flex-direction: column; justify-content: center; }
 
 /* ---------- Záverečná otázka ---------- */
+
+/* „TO BE CONTINUED…“ v pravom dolnom rohu */
+.to-be-continued {
+  position: fixed;
+  right: clamp(16px, 3vw, 40px);
+  bottom: clamp(16px, 3vh, 36px);
+  z-index: 3;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(13px, 1.4vw, 18px);
+  letter-spacing: 0.3em;
+  color: var(--cyan);
+  text-shadow: var(--glow);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.to-be-continued.is-on { opacity: 1; }
 
 .story--mission { min-height: 60vh; justify-content: center; }
 .mission {

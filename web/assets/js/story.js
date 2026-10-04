@@ -10,9 +10,16 @@
   var ENTER = 400;          // ako dlho sa karta objavuje, kým sa začne písať text
   var HOLD = 1300;          // čas na prečítanie po dopísaní textu, kým sa objaví ďalšia karta
   var LEAVE = 850;          // ako dlho trvá odchod kapitoly (po Continue alebo data-auto-next)
-  var SLIDE_FIRST = 2800;   // zručnosti: ako dlho svieti prvý obrázok…
-  var SLIDE_LAST = 420;     // …a ako dlho posledný – medzi tým sa to plynulo zrýchľuje
-  var SLIDE_TYPE = 1400;    // obrázky kratšie než toto už popis nepíšu, ukážu ho naraz
+  // Zručnosti – časovanie obrázkov:
+  var SITE_FIRST = 4800;    // obrázky „kde a ako“ (Hitachi/GE … bez žeriavu): prvý svieti 4,8 s,
+  var SLOWDOWN = 0.932;     //   každý ďalší o ~7 % kratšie (posledný z nich ~3,5 s)
+  var SITE_EXTRA = 2000;    //   – z toho 2 s navyše oproti pôvodnému tempu
+  var TOOLS_STEADY = 4;     // náradie: prvé 4 ešte pokojne (od 1,4 s po ~1,1 s)…
+  var TOOLS_FIRST = 1400;
+  var FLICKER_FROM = 750;   // …potom prudko zrýchľuje až do preblikávania
+  var FLICKER_TO = 110;
+  var SLIDE_TYPE = 1000;    // obrázky kratšie než toto už popis nepíšu, ukážu ho naraz
+  var SLIDE_FLASH = 300;    // kratšie obrázky sa menia bez záblesku (aby to neblikalo príliš ostro)
 
   var root = document.getElementById('intro');
   var chapters = Array.prototype.slice.call(document.querySelectorAll('[data-chapter]'));
@@ -100,14 +107,24 @@
     var box = ch.querySelector('.slides');
     var imgs = all(ch, '.slides__img');
     var text = ch.querySelector('.slides__text');
-    var n = imgs.length;
-    var ratio = Math.pow(SLIDE_LAST / SLIDE_FIRST, 1 / Math.max(n - 1, 1));
+    var tools = imgs.filter(function (img) { return img.hasAttribute('data-tool'); });
+    var site = imgs.length - tools.length;
+    var flicker = tools.length - TOOLS_STEADY;
+    var ratio = Math.pow(FLICKER_TO / FLICKER_FROM, 1 / Math.max(flicker - 1, 1));
+
+    function duration(i) {
+      if (i < site) return (SITE_FIRST - SITE_EXTRA) * Math.pow(SLOWDOWN, i) + SITE_EXTRA;
+      var j = i - site;
+      if (j < TOOLS_STEADY) return TOOLS_FIRST * Math.pow(SLOWDOWN, j);
+      return FLICKER_FROM * Math.pow(ratio, j - TOOLS_STEADY);
+    }
 
     box.classList.add('is-on');
     var chain = wait(600);
     imgs.forEach(function (img, i) {
-      var ms = Math.round(SLIDE_FIRST * Math.pow(ratio, i));
+      var ms = Math.round(duration(i));
       chain = chain.then(function () {
+        box.classList.toggle('is-fast', ms < SLIDE_FLASH);
         if (imgs[i - 1]) imgs[i - 1].classList.remove('is-on');
         img.classList.add('is-on');
         text.setAttribute('data-text', img.getAttribute('data-caption'));
@@ -143,6 +160,12 @@
       chain = chain.then(function () { return show(card, i === cards.length - 1 ? 0 : hold); });
     });
     if (ch.querySelector('.slides')) chain = chain.then(function () { return slideshow(ch); });
+
+    // data-delay="ms" – text, ktorý sa napíše až chvíľu po dobehnutí kapitoly (TO BE CONTINUED…)
+    all(ch, '.type[data-delay]').forEach(function (el) {
+      chain.then(function () { return wait(parseInt(el.getAttribute('data-delay'), 10)); })
+        .then(function () { el.classList.add('is-on'); return type(el); });
+    });
 
     if (!chapters[index + 1]) return;
 
