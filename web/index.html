@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/media/portrait.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="assets/css/intro.css?v=4">
-  <link rel="stylesheet" href="assets/css/story.css?v=4">
+  <link rel="stylesheet" href="assets/css/intro.css?v=5">
+  <link rel="stylesheet" href="assets/css/story.css?v=5">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -62,7 +62,7 @@
     </section>
 
     <!-- Príbeh: kapitola 01 – vzdelanie (spustí sa po Continue) -->
-    <section class="story" id="story" aria-labelledby="edu-title" hidden>
+    <section class="story" id="story" data-chapter aria-labelledby="edu-title" hidden>
       <header class="chapter">
         <h2 class="chapter__title type" id="edu-title" data-text="EDUCATION">EDUCATION</h2>
       </header>
@@ -102,10 +102,55 @@
           </div>
         </div></li>
       </ol>
+
+      <div class="story__next">
+        <button class="continue" type="button">Continue <span aria-hidden="true">&#9656;</span></button>
+      </div>
+    </section>
+
+    <!-- Príbeh: kapitola 02 – pracovné skúsenosti pred GIS -->
+    <section class="story" id="work" data-chapter aria-labelledby="work-title" hidden>
+      <header class="chapter">
+        <h2 class="chapter__title type" id="work-title" data-text="WORK EXPERIENCE">WORK EXPERIENCE</h2>
+        <p class="chapter__sub type" data-text="BEFORE GIS">BEFORE GIS</p>
+      </header>
+
+      <ol class="timeline">
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/work-gamma.webp" width="960" height="720" alt="Röntgenová kontrola zvaru na potrubí gama žiaričom">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <p class="card__years type" data-text="2006 – 2007">2006 – 2007</p>
+            <h3 class="card__name type" data-text="LABORATORY X-RAY TESTING OF WELD JOINTS">LABORATORY X-RAY TESTING OF WELD JOINTS</h3>
+          </div>
+        </div></li>
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/work-makino.webp" width="960" height="720" alt="CNC obrábacie centrum Makino s robotickým ramenom">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <p class="card__years type" data-text="2007 – 2009">2007 – 2009</p>
+            <h3 class="card__name type" data-text="SERVICE AND INSTALLATION OF MAKINO CNC MACHINES AND ROBOTIC SYSTEMS">SERVICE AND INSTALLATION OF MAKINO CNC MACHINES AND ROBOTIC SYSTEMS</h3>
+          </div>
+        </div></li>
+        <li class="card"><div class="card__frame">
+          <div class="card__photo">
+            <img src="assets/media/work-tdw.webp" width="960" height="720" alt="Potrubná technológia T.D. Williamson s obtokom a uzatváracími zariadeniami">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <p class="card__years type" data-text="2009 – 2011">2009 – 2011</p>
+            <h3 class="card__name type" data-text="SERVICE AND REVISION OF T.D. WILLIAMSON TECHNOLOGY">SERVICE AND REVISION OF T.D. WILLIAMSON TECHNOLOGY</h3>
+          </div>
+        </div></li>
+      </ol>
     </section>
   </main>
 
-  <script src="assets/js/intro.js?v=4"></script>
-  <script src="assets/js/story.js?v=4"></script>
+  <script src="assets/js/intro.js?v=5"></script>
+  <script src="assets/js/story.js?v=5"></script>
 </body>
 </html>

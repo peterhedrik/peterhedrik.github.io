@@ -1,5 +1,5 @@
 /* ==========================================================
-   Príbeh – kapitoly po intre (kapitola 01: vzdelanie)
+   Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti…)
    ========================================================== */
 
 /* ---------- Prechod z intra ---------- */
@@ -63,6 +63,26 @@
   transition: transform 1s 0.2s ease-out;
 }
 .chapter__title:not(:has(.ghost))::after { transform: scaleX(1); }
+
+/* podnadpis kapitoly (napr. „BEFORE GIS“) */
+.chapter__sub {
+  margin: 22px 0 0;
+  font-family: var(--font-mono);
+  font-size: clamp(13px, 1.3vw, 17px);
+  letter-spacing: 0.4em;
+  color: var(--cyan);
+  text-shadow: var(--glow);
+}
+
+/* odchod kapitoly po Continue – rovnaký glitch ako pri HUD-e */
+.story.is-leaving { animation: hud-out 0.85s ease-in forwards; }
+
+/* Continue pod kartami */
+.story__next {
+  display: flex;
+  justify-content: center;
+  min-height: 56px;
+}
 
 /* ---------- Karty ---------- */
 
@@ -218,4 +238,5 @@
   .card__name { font-size: 14px; }
   .card__field { font-size: 10.5px; margin-top: 4px; }
   .card__note { font-size: 10.5px; margin-top: 6px; padding-top: 6px; }
+  .chapter__sub { margin-top: 16px; letter-spacing: 0.3em; }
 }
