@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="preload" href="assets/media/portrait.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="assets/css/intro.css?v=5">
-  <link rel="stylesheet" href="assets/css/story.css?v=5">
+  <link rel="stylesheet" href="assets/css/intro.css?v=6">
+  <link rel="stylesheet" href="assets/css/story.css?v=6">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -147,10 +147,47 @@
           </div>
         </div></li>
       </ol>
+
+      <div class="story__next">
+        <button class="continue" type="button">Continue <span aria-hidden="true">&#9656;</span></button>
+      </div>
+    </section>
+
+    <!-- Príbeh: kapitola 03 – vstup do GIS (ABB → Hitachi). Ďalšia kapitola sa otvorí sama
+         po data-auto-next ms (bez Continue). -->
+    <section class="story story--gis" id="gis" data-chapter data-auto-next="6000" aria-labelledby="gis-title" hidden>
+      <header class="chapter">
+        <h2 class="chapter__title type" id="gis-title" data-text="2011">2011</h2>
+        <p class="chapter__lead type" data-text="JOINED THE GIS INDUSTRY">JOINED THE GIS INDUSTRY</p>
+      </header>
+
+      <ol class="timeline timeline--pair">
+        <li class="card"><div class="card__frame">
+          <div class="card__photo card__photo--logo">
+            <img src="assets/media/logo-abb.webp" width="250" height="130" alt="Logo ABB">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <p class="card__years type" data-text="2011">2011</p>
+            <h3 class="card__name type" data-text="START IN ABB COMPANY">START IN ABB COMPANY</h3>
+          </div>
+        </div></li>
+        <li class="timeline__arrow" aria-hidden="true"></li>
+        <li class="card"><div class="card__frame">
+          <div class="card__photo card__photo--logo">
+            <img src="assets/media/logo-hitachi.webp" width="700" height="226" alt="Logo Hitachi">
+            <span class="card__scan" aria-hidden="true"></span>
+          </div>
+          <div class="card__body">
+            <p class="card__years type" data-text="2020">2020</p>
+            <h3 class="card__name type" data-text="ABB POWER GRIDS DIVISION MOVED TO HITACHI">ABB POWER GRIDS DIVISION MOVED TO HITACHI</h3>
+          </div>
+        </div></li>
+      </ol>
     </section>
   </main>
 
-  <script src="assets/js/intro.js?v=5"></script>
-  <script src="assets/js/story.js?v=5"></script>
+  <script src="assets/js/intro.js?v=6"></script>
+  <script src="assets/js/story.js?v=6"></script>
 </body>
 </html>

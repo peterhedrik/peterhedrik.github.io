@@ -1,5 +1,5 @@
 /* ==========================================================
-   Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti…)
+   Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti, 03 GIS…)
    ========================================================== */
 
 /* ---------- Prechod z intra ---------- */
@@ -74,6 +74,17 @@
   text-shadow: var(--glow);
 }
 
+/* väčší podnadpis pod rokom (kapitola 03: „JOINED THE GIS INDUSTRY“) */
+.chapter__lead {
+  margin: 18px 0 0;
+  font-size: clamp(22px, 3vw, 38px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.18em;
+  color: var(--cyan);
+  text-shadow: var(--glow);
+}
+
 /* odchod kapitoly po Continue – rovnaký glitch ako pri HUD-e */
 .story.is-leaving { animation: hud-out 0.85s ease-in forwards; }
 
@@ -94,6 +105,40 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(16px, 2.4vw, 32px);
 }
+
+/* dve karty so šípkou medzi nimi (ABB → Hitachi) */
+.timeline--pair {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  width: min(900px, 100%);
+  margin: 0 auto;
+}
+
+.timeline__arrow {
+  width: clamp(36px, 5vw, 64px);
+  height: 2px;
+  position: relative;
+  background: linear-gradient(90deg, transparent, var(--cyan));
+  box-shadow: 0 0 10px var(--cyan-strong);
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: opacity 0.4s ease, transform 0.6s ease-out;
+}
+.timeline__arrow::after {
+  content: "";
+  position: absolute;
+  right: -2px; top: 50%;
+  width: 12px; height: 12px;
+  border-top: 2px solid var(--cyan);
+  border-right: 2px solid var(--cyan);
+  transform: translateY(-50%) rotate(45deg);
+  filter: drop-shadow(0 0 6px var(--cyan-strong));
+}
+/* šípka sa natiahne, keď sa objaví druhá karta */
+.timeline__arrow:has(+ .card.is-on) { opacity: 1; transform: none; }
+
+.timeline--pair .card { align-self: stretch; }
 
 .card {
   position: relative;
@@ -131,6 +176,14 @@
   object-fit: cover;
   outline: 1px solid rgba(127, 243, 255, 0.35);
   outline-offset: -1px;
+}
+
+/* logo firmy na bielej ploche namiesto fotky */
+.card__photo--logo img {
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  padding: 12% 14%;
+  background: #fff;
 }
 
 .card.is-on .card__photo img { animation: card-glitch 0.8s ease-out; }
@@ -239,4 +292,10 @@
   .card__field { font-size: 10.5px; margin-top: 4px; }
   .card__note { font-size: 10.5px; margin-top: 6px; padding-top: 6px; }
   .chapter__sub { margin-top: 16px; letter-spacing: 0.3em; }
+  .chapter__lead { margin-top: 16px; letter-spacing: 0.12em; }
+  .timeline--pair { grid-template-columns: 1fr; justify-items: center; }
+  .timeline--pair .card { justify-self: stretch; }
+  .timeline__arrow { width: 2px; height: 28px; background: linear-gradient(180deg, transparent, var(--cyan)); transform: scaleY(0); transform-origin: top; }
+  .timeline__arrow::after { right: auto; top: auto; left: 50%; bottom: -2px; transform: translateX(-50%) rotate(135deg); }
+  .card__photo--logo img { aspect-ratio: auto; padding: 14% 10%; }
 }

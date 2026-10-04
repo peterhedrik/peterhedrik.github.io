@@ -1,14 +1,15 @@
-/* Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti…).
+/* Príbeh – kapitoly po intre (01 vzdelanie, 02 pracovné skúsenosti, 03 GIS…).
    Každá kapitola je <section data-chapter>. Karty sa ukazujú samy jedna po druhej priamo
    na svojom mieste (zľava doprava) a ostávajú zobrazené. Po poslednej karte sa objaví
-   Continue, ktoré kapitolu zavrie a otvorí ďalšiu. */
+   Continue, ktoré kapitolu zavrie a otvorí ďalšiu – alebo, ak má kapitola data-auto-next,
+   sa ďalšia otvorí sama po danom čase. */
 (function () {
   'use strict';
 
   var TYPE_SPEED = 15;      // ms na znak (rýchlejšie než intro – textu je viac)
   var ENTER = 400;          // ako dlho sa karta objavuje, kým sa začne písať text
   var HOLD = 1300;          // čas na prečítanie po dopísaní textu, kým sa objaví ďalšia karta
-  var LEAVE = 850;          // ako dlho trvá odchod kapitoly po Continue
+  var LEAVE = 850;          // ako dlho trvá odchod kapitoly (po Continue alebo data-auto-next)
 
   var root = document.getElementById('intro');
   var chapters = Array.prototype.slice.call(document.querySelectorAll('[data-chapter]'));
@@ -88,22 +89,32 @@
       chain = chain.then(function () { return show(card, i === cards.length - 1); });
     });
 
-    var btn = ch.querySelector('.story__next .continue');
-    if (!btn || !chapters[index + 1]) return;
+    if (!chapters[index + 1]) return;
 
-    chain.then(function () { return wait(500); }).then(function () {
-      btn.classList.add('is-on');
-      if (narrow.matches) btn.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
-    });
-
-    btn.addEventListener('click', function () {
+    function leave() {
       if (ch.classList.contains('is-leaving')) return;
       ch.classList.add('is-leaving');
       wait(LEAVE).then(function () {
         ch.hidden = true;
         open(index + 1);
       });
+    }
+
+    // data-auto-next="ms" – ďalšia kapitola sa otvorí sama, bez Continue
+    var auto = parseInt(ch.getAttribute('data-auto-next'), 10);
+    if (auto) {
+      chain.then(function () { return wait(auto); }).then(leave);
+      return;
+    }
+
+    var btn = ch.querySelector('.story__next .continue');
+    if (!btn) return;
+
+    chain.then(function () { return wait(500); }).then(function () {
+      btn.classList.add('is-on');
+      if (narrow.matches) btn.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
     });
+    btn.addEventListener('click', leave);
   }
 
   document.addEventListener('story:start', function () {
