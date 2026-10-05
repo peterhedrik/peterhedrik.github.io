@@ -11,9 +11,9 @@
   var HOLD = 1300;          // čas na prečítanie po dopísaní textu, kým sa objaví ďalšia karta
   var LEAVE = 850;          // ako dlho trvá odchod kapitoly (po Continue alebo data-auto-next)
   // Zručnosti – časovanie obrázkov:
-  var SITE_FIRST = 4800;    // obrázky „kde a ako“ (Hitachi/GE … bez žeriavu): prvý svieti 4,8 s,
-  var SLOWDOWN = 0.932;     //   každý ďalší o ~7 % kratšie (posledný z nich ~3,5 s)
-  var SITE_EXTRA = 2000;    //   – z toho 2 s navyše oproti pôvodnému tempu
+  var SITE_FIRST = 3800;    // obrázky „kde a ako“ (Hitachi/GE … bez žeriavu): prvý svieti 3,8 s,
+  var SLOWDOWN = 0.932;     //   každý ďalší o ~7 % kratšie (posledný z nich ~2,5 s)
+  var SITE_EXTRA = 1000;    //   – z toho 1 s navyše oproti pôvodnému tempu (Peter: každý o 1 s kratšie)
   var TOOLS_STEADY = 4;     // náradie: prvé 4 ešte pokojne (od 1,4 s po ~1,1 s)…
   var TOOLS_FIRST = 1400;
   var FLICKER_FROM = 750;   // …potom prudko zrýchľuje až do preblikávania
