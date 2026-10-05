@@ -101,6 +101,30 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .is-revealed .stage__shade,
 .is-revealed .stage__scanlines { opacity: 1; }
 
+/* Tlačidlo PLAY – len keď prehliadač nedovolí automatické prehrávanie */
+.intro__play {
+  position: fixed; left: 50%; top: 50%; z-index: 3;
+  transform: translate(-50%, -50%);
+  display: none; align-items: center; gap: 14px;
+  padding: 16px 30px;
+  border: 1px solid var(--cyan-dim);
+  background: var(--panel);
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 20px; letter-spacing: 0.3em;
+  text-shadow: var(--glow);
+  box-shadow: 0 0 24px rgba(63, 230, 245, 0.25);
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)), calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
+}
+.needs-tap .intro__play { display: inline-flex; }
+.intro__play-icon {
+  width: 0; height: 0;
+  border-left: 16px solid currentColor;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  filter: drop-shadow(0 0 6px rgba(63, 230, 245, 0.75));
+}
+
 /* ---------- HUD ---------- */
 
 .hud {

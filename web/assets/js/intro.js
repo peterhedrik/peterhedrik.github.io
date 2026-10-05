@@ -110,11 +110,27 @@
 
 
   // ----- Štart -----
+  // Video sa púšťa aj pri „obmedziť animácie“ (niektoré telefóny to zapínajú samy v úspornom režime).
 
-  if (reduceMotion) {
-    showFinal();
-    return;
+  video.muted = true; // niektoré mobilné prehliadače berú do úvahy len vlastnosť, nie atribút
+
+  // Keď prehliadač nedovolí automatické prehrávanie (úsporný režim na mobile),
+  // ukážeme tlačidlo – po ťuknutí sa intro prehrá normálne.
+  var playBtn = document.getElementById('introPlay');
+  function askForTap() {
+    if (revealed) return;
+    clearTimeout(fallbackTimer);
+    root.classList.add('needs-tap');
   }
+  playBtn.addEventListener('click', function () {
+    root.classList.remove('needs-tap');
+    var p = video.play();
+    if (p && typeof p.then === 'function') {
+      p.then(function () { requestAnimationFrame(watch); }).catch(showFinal);
+    } else {
+      requestAnimationFrame(watch);
+    }
+  });
 
   video.addEventListener('ended', reveal);
   video.addEventListener('error', showFinal, true);
@@ -130,17 +146,18 @@
       }).catch(function (err) {
         // NotAllowedError = prehliadač automatické prehrávanie zakázal (napr. úsporný režim).
         // AbortError = prehrávanie prerušené (karta išla na pozadie) – skúsime znova po návrate.
-        if (err && err.name === 'NotAllowedError') showFinal();
+        if (err && err.name === 'NotAllowedError') askForTap();
       });
     } else {
       requestAnimationFrame(watch);
     }
 
-    // Poistka: ak sa video do 12 s ani nerozbehne (pomalé pripojenie), ukážeme rovno HUD
+    // Poistka: ak sa video do 20 s ani nerozbehne (veľmi pomalé pripojenie), ukážeme rovno HUD
     if (!fallbackTimer) {
       fallbackTimer = setTimeout(function () {
-        if (!revealed && !document.hidden && video.currentTime < 0.5) showFinal();
-      }, 12000);
+        if (!revealed && !document.hidden && video.currentTime < 0.5 &&
+            !root.classList.contains('needs-tap')) showFinal();
+      }, 20000);
     }
   }
 
